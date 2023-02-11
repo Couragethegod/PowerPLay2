@@ -41,12 +41,12 @@ public class Teleop_main extends LinearOpMode {
         Uarm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         Barm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        Uarm.setTargetPosition(40);
+        /*Uarm.setTargetPosition(40);
         Barm.setTargetPosition(40);
         Uarm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         Barm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         Uarm.setPower(0.5);
-        Barm.setPower(0.5);
+        Barm.setPower(0.5);*/
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
@@ -62,7 +62,7 @@ public class Teleop_main extends LinearOpMode {
     public void move(){
         float drive = -gamepad1.left_stick_y;
         float turn = gamepad1.left_stick_x;
-        if (Uarm.getCurrentPosition() > 400 && Barm.getCurrentPosition() > 400){
+        if (Uarm.getCurrentPosition() > 400 && Barm.getCurrentPosition() > 1015){
             Lwheels.setPower(((drive + turn) / 4) * 2);
             Rwheels.setPower(((drive - turn) / 4) * 2);
         } else {

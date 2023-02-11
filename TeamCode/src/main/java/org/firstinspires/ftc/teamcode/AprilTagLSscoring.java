@@ -36,7 +36,7 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 import java.util.ArrayList;
 
 @Autonomous
-public class AprilTagLS extends LinearOpMode
+public class AprilTagLSscoring extends LinearOpMode
 {
     OpenCvCamera camera;
     AprilTagDetectionPipeline aprilTagDetectionPipeline;
@@ -214,34 +214,28 @@ public class AprilTagLS extends LinearOpMode
             }
             Claw.setPower(-.5);
             sleep(500);
-            Lwheels.setTargetPosition(Lwheels.getCurrentPosition() - 1200);
-            Rwheels.setTargetPosition(Rwheels.getCurrentPosition() - 1200);
-            Rwheels.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            Lwheels.setTargetPosition(Lwheels.getCurrentPosition() - 685);
+            Rwheels.setTargetPosition(Rwheels.getCurrentPosition() + 685);
             Lwheels.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            Lwheels.setPower(1);
+            Rwheels.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             Rwheels.setPower(1);
-
-            while (Lwheels.isBusy() && Rwheels.isBusy()){
-                sleep(15);
-            }
-            Lwheels.setTargetPosition(Lwheels.getTargetPosition() - 695);
-            Rwheels.setTargetPosition(Rwheels.getTargetPosition() + 695);
+            Lwheels.setPower(1);
 
             while (Lwheels.isBusy() && Rwheels.isBusy()){
                 sleep(15);
             }
             Rwheels.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
             Lwheels.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            Lwheels.setPower(-0.4);
-            Rwheels.setPower(-0.4);
-            sleep(1000);
+            Lwheels.setPower(-0.5);
+            Rwheels.setPower(-0.5);
+            sleep(1500);
             Lwheels.setPower(0);
             Rwheels.setPower(0);
             Rwheels.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             Lwheels.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             sleep(20);
-            Lwheels.setTargetPosition(Lwheels.getCurrentPosition() + 1700);
-            Rwheels.setTargetPosition(Rwheels.getCurrentPosition() + 1700);
+            Lwheels.setTargetPosition(Lwheels.getCurrentPosition() + 3300);
+            Rwheels.setTargetPosition(Rwheels.getCurrentPosition() + 3300);
             Lwheels.setPower(1);
             Rwheels.setPower(1);
             Rwheels.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -249,6 +243,34 @@ public class AprilTagLS extends LinearOpMode
             while (Rwheels.isBusy() && Lwheels.isBusy()){
                 sleep(15);
             }
+            sleep(1000);
+            Lwheels.setTargetPosition(Lwheels.getCurrentPosition() - 300);
+            Rwheels.setTargetPosition(Rwheels.getCurrentPosition() - 300);
+            while (Rwheels.isBusy() && Lwheels.isBusy()){
+                sleep(15);
+            }
+            sleep(1000);
+            Lwheels.setTargetPosition(Lwheels.getCurrentPosition() + 320);
+            //Rwheels.setTargetPosition(Rwheels.getCurrentPosition() + 3000);
+            while (Lwheels.isBusy()){
+                sleep(15);
+            }
+            sleep(1000);
+            Uarm.setTargetPosition(1440);
+            Barm.setTargetPosition(1440);
+            while (Rwheels.isBusy() && Lwheels.isBusy()){
+                sleep(15);
+            }
+            sleep(1000);
+            Lwheels.setTargetPosition(Lwheels.getCurrentPosition() + 580);
+            Rwheels.setTargetPosition(Rwheels.getCurrentPosition() + 580);
+            Lwheels.setPower(.5);
+            Rwheels.setPower(.5);
+            while (Rwheels.isBusy() && Lwheels.isBusy()){
+                sleep(15);
+            }
+            sleep(1000);
+            Claw.setPower(.2);
             telemetry.addLine("Left");
             //left trajectory
         }else if(tagOfInterest.id == MIDDLE){
@@ -263,42 +285,57 @@ public class AprilTagLS extends LinearOpMode
                 sleep(15);
             }
             Claw.setPower(-.5);
-            sleep(500);
-            Lwheels.setPower(1);
-            Rwheels.setPower(1);
-            Lwheels.setTargetPosition(Lwheels.getCurrentPosition() + 300);
-            Rwheels.setTargetPosition(Rwheels.getCurrentPosition() + 300);
+            Lwheels.setTargetPosition(Lwheels.getCurrentPosition() - 685);
+            Rwheels.setTargetPosition(Rwheels.getCurrentPosition() + 685);
             Lwheels.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             Rwheels.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            while (Rwheels.isBusy() && Lwheels.isBusy()){
-                sleep(15);
-            }
-            sleep(20);
-            Lwheels.setTargetPosition(Lwheels.getTargetPosition() - 525);
-            Rwheels.setTargetPosition(Rwheels.getTargetPosition() + 525);
+            Rwheels.setPower(1);
+            Lwheels.setPower(1);
+
             while (Lwheels.isBusy() && Rwheels.isBusy()){
                 sleep(15);
             }
-            sleep(20);
-            Lwheels.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
             Rwheels.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            Lwheels.setPower(-.5);
-            Rwheels.setPower(-.5);
-            sleep(1000);
-            Rwheels.setPower(0);
+            Lwheels.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            Lwheels.setPower(-0.5);
+            Rwheels.setPower(-0.5);
+            sleep(1500);
             Lwheels.setPower(0);
-            sleep(500);
-            Lwheels.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            Rwheels.setPower(0);
             Rwheels.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            Lwheels.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            sleep(20);
+            Lwheels.setTargetPosition(Lwheels.getCurrentPosition() + 3000);
+            Rwheels.setTargetPosition(Rwheels.getCurrentPosition() + 3000);
             Lwheels.setPower(1);
             Rwheels.setPower(1);
-            Lwheels.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             Rwheels.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            Lwheels.setTargetPosition(Lwheels.getCurrentPosition() + 2500);
-            Rwheels.setTargetPosition(Rwheels.getCurrentPosition() + 2500);
+            Lwheels.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             while (Rwheels.isBusy() && Lwheels.isBusy()){
                 sleep(15);
             }
+            sleep(1000);
+            Lwheels.setTargetPosition(Lwheels.getCurrentPosition() + 320);
+            //Rwheels.setTargetPosition(Rwheels.getCurrentPosition() + 3000);
+            while (Lwheels.isBusy()){
+                sleep(15);
+            }
+            sleep(1000);
+            Uarm.setTargetPosition(1440);
+            Barm.setTargetPosition(1440);
+            while (Rwheels.isBusy() && Lwheels.isBusy()){
+                sleep(15);
+            }
+            sleep(1000);
+            Lwheels.setTargetPosition(Lwheels.getCurrentPosition() + 580);
+            Rwheels.setTargetPosition(Rwheels.getCurrentPosition() + 580);
+            Lwheels.setPower(.5);
+            Rwheels.setPower(.5);
+            while (Rwheels.isBusy() && Lwheels.isBusy()){
+                sleep(15);
+            }
+            sleep(1000);
+            Claw.setPower(.2);
             telemetry.addLine("Mid");
         }else{
             //right trajectory
